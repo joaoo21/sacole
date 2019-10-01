@@ -34,20 +34,7 @@ public class DaoSacole {
             return false;
         }
     }
-      public static void main(String[] args) {
-        Sacole objeto = new Sacole();
-        objeto.setNrdeserie(23);
-        objeto.setPreco(12.2);
-        objeto.setDatadevalidade(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        objeto.setSabor("Uva");
-        
-        boolean resultado = inserir(objeto);
-        if (resultado) {
-            JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Erro!");
-        }
-    }
+
 
       
         public static boolean alterar(Sacole objeto) {
@@ -94,7 +81,7 @@ public class DaoSacole {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNrdeserie(rs.getInt("nrdeserie"));
                 objeto.setPreco(rs.getDouble("preco"));
-                objeto.setDatadevalidade(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                objeto.setDatadevalidade(rs.getDate("datadevalidade").toLocalDate());
                 objeto.setSabor(rs.getString("sabor"));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
@@ -120,7 +107,7 @@ public class DaoSacole {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNrdeserie(rs.getInt("nrdeserie"));
                 objeto.setPreco(rs.getDouble("preco"));
-                objeto.setDatadevalidade(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                objeto.setDatadevalidade(rs.getDate("datadevalidade").toLocalDate());
                 objeto.setSabor(rs.getString("sabor"));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
